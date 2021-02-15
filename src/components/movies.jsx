@@ -5,6 +5,7 @@ import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
 import ListGroup from './common/listGroup';
 import { getGenres } from '../services/fakeGenreService';
+import { filter } from 'lodash';
 
 class Movies extends Component {
 	state = {
@@ -15,7 +16,8 @@ class Movies extends Component {
 	};
 
 	componentDidMount() {
-		this.setState({ movies: getMovies(), genres: getGenres() });
+		const genres = [ { name: 'All Genres' }, ...getGenres() ];
+		this.setState({ movies: getMovies(), genres });
 	}
 
 	handleDelete = (movie) => {
@@ -35,26 +37,38 @@ class Movies extends Component {
 	};
 
 	handleGenreSelect = (genre) => {
-		console.log(genre);
+		this.setState({ selectedGenre: genre, currentPage: 1 });
 	};
 
 	render() {
 		const { length: count } = this.state.movies;
-		const { pageSize, currentPage, movies: allMovies, genres } = this.state;
+		const {
+			pageSize,
+			currentPage,
+			movies: allMovies,
+			genres,
+			selectedGenre
+		} = this.state;
 		if (count === 0) return <p>There are no movies in database.</p>;
 
-		const movies = paginate(allMovies, currentPage, pageSize);
+		const filtered =
+			selectedGenre && selectedGenre.id
+				? allMovies.filter((m) => m.genre.id === selectedGenre.id)
+				: allMovies;
+
+		const movies = paginate(filtered, currentPage, pageSize);
 
 		return (
 			<div className="row">
 				<div className="col-3">
 					<ListGroup
 						items={genres}
+						selectedItem={selectedGenre}
 						onItemSelect={this.handleGenreSelect}
 					/>
 				</div>
 				<div className="col">
-					<p>Showing {count} movies in database.</p>
+					<p>Showing {filtered.length} movies in database.</p>
 					<table className="table">
 						<thead>
 							<tr>
@@ -94,7 +108,7 @@ class Movies extends Component {
 						</tbody>
 					</table>
 					<Pagination
-						itemsCount={count}
+						itemsCount={filtered.length}
 						pageSize={pageSize}
 						onPageChange={this.handlePageChange}
 						currentPage={currentPage}
