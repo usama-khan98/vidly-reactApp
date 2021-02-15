@@ -52,7 +52,7 @@ class Movies extends Component {
 						{movies.map((movie) => (
 							<tr key={movie.id}>
 								<td>{movie.title}</td>
-								<td>{movie.genre}</td>
+								<td>{movie.genre.name}</td>
 								<td>{movie.numberInStock}</td>
 								<td>{movie.dailyRentalRate}</td>
 								<td>

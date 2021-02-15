@@ -1,70 +1,70 @@
-
+import * as genresAPI from './fakeGenreService'
 
 const movies = [
     {
-        id:'1',
+        id:'5b21ca3eeb7f6fbccd471815',
         title:'Terminator',
         numberInStock:6,
-        genre:'Fighting',
+        genre:{id: '5b21ca3eeb7f6fbccd471818', name: "Action"},
         dailyRentalRate: 2.5,
         publishData: '2020-01-03T19:04:2.809Z',
         liked:true
     },
     {
-        id:'2',
+        id:'5b21ca3eeb7f6fbccd471816',
         title:'Die Hard',
         numberInStock:5,
-        genre:'Horror',
+        genre:{id: '5b21ca3eeb7f6fbccd471818', name: "Action"},
         dailyRentalRate: 2.5
     },
     {
-        id:'3',
+        id:'5b21ca3eeb7f6fbccd471817',
         title:'Get Out',
         numberInStock:8,
-        genre:'Funny',
+        genre:{id: '5b21ca3eeb7f6fbccd4718120', name: "Thriller"},
         dailyRentalRate: 3.5
     },
     {
-        id:'4',
+        id:'5b21ca3eeb7f6fbccd471819',
         title:'Trip to Italy',
         numberInStock:8,
-        genre:'Comedy',
+        genre:{id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
         dailyRentalRate: 2.5
     },
     {
-        id:'5',
+        id:'5b21ca3eeb7f6fbccd47181a',
         title:'Airplane',
         numberInStock:7,
-        genre:'Comedy',
+        genre:{id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
         dailyRentalRate: 2.5
     },
     {
-        id:'6',
+        id:'5b21ca3eeb7f6fbccd47181b',
+        title:'Wedding Crashers',
+        numberInStock:10,
+        genre:{id: "5b21ca3eeb7f6fbccd471814", name: "Comedy"},
+        dailyRentalRate: 4.5
+    },
+    {
+        id:'5b21ca3eeb7f6fbccd47181e',
         title:'Gone Girl',
         numberInStock:10,
-        genre:'Thriller',
+        genre:{id: "5b21ca3eeb7f6fbccd471820", name: "Thriller"},
         dailyRentalRate: 4.5
     },
     {
-        id:'7',
+        id:'5b21ca3eeb7f6fbccd47181f',
         title:'The Sixth Sense',
         numberInStock:4,
-        genre:'Thriller',
+        genre:{id: "5b21ca3eeb7f6fbccd471820", name: "Thriller"},
         dailyRentalRate: 3.5
     },
     {
-        id:'8',
+        id:'5b21ca3eeb7f6fbccd471821',
         title:'The Avengers',
         numberInStock:7,
-        genre:'Action',
+        genre:{id: '5b21ca3eeb7f6fbccd471818', name: "Action"},
         dailyRentalRate: 3.5
-    },
-    {
-        id:'9',
-        title:'Thor',
-        numberInStock:7.5,
-        genre:'Action',
-        dailyRentalRate: 4.5
     }
 ]
 
