@@ -58,6 +58,13 @@ const movies = [
         numberInStock:7,
         genre:'Action',
         dailyRentalRate: 3.5
+    },
+    {
+        id:'9',
+        title:'Thor',
+        numberInStock:7.5,
+        genre:'Action',
+        dailyRentalRate: 4.5
     }
 ]
 
