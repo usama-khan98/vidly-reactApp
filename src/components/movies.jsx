@@ -4,7 +4,6 @@ import Pagination from './common/pagination';
 import { paginate } from '../utils/paginate';
 import ListGroup from './common/listGroup';
 import { getGenres } from '../services/fakeGenreService';
-import { filter } from 'lodash';
 import _ from 'lodash';
 import MoviesTable from './moviesTable';
 
@@ -86,31 +85,33 @@ class Movies extends Component {
 		const { totalCount, data: movies } = this.getPageData();
 
 		return (
-			<div className="row">
-				<div className="col-3">
-					<ListGroup
-						items={genres}
-						selectedItem={selectedGenre}
-						onItemSelect={this.handleGenreSelect}
-					/>
+			<React.Fragment>
+				<div className="row">
+					<div className="col-3">
+						<ListGroup
+							items={genres}
+							selectedItem={selectedGenre}
+							onItemSelect={this.handleGenreSelect}
+						/>
+					</div>
+					<div className="col">
+						<p>Showing {totalCount} movies in database.</p>
+						<MoviesTable
+							movies={movies}
+							sortColumn={sortColumn}
+							onLike={this.handleLike}
+							onDelete={this.handleDelete}
+							onSort={this.handleSort}
+						/>
+						<Pagination
+							itemsCount={totalCount}
+							pageSize={pageSize}
+							onPageChange={this.handlePageChange}
+							currentPage={currentPage}
+						/>
+					</div>
 				</div>
-				<div className="col">
-					<p>Showing {totalCount} movies in database.</p>
-					<MoviesTable
-						movies={movies}
-						sortColumn={sortColumn}
-						onLike={this.handleLike}
-						onDelete={this.handleDelete}
-						onSort={this.handleSort}
-					/>
-					<Pagination
-						itemsCount={totalCount}
-						pageSize={pageSize}
-						onPageChange={this.handlePageChange}
-						currentPage={currentPage}
-					/>
-				</div>
-			</div>
+			</React.Fragment>
 		);
 	}
 }
