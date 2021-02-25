@@ -41,7 +41,7 @@ class LoginForm extends Form {
 						error={errors.password}
 					/>
 					<button
-						disabled={this.validate}
+						disabled={this.validate()}
 						className="btn btn-primary"
 					>
 						Login
