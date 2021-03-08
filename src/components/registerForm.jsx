@@ -1,6 +1,6 @@
 import React from 'react';
-import Joi from 'joi-browser';
 import Form from './common/form';
+import Joi from 'joi-browser';
 
 class Register extends Form {
 	state = {
@@ -13,11 +13,8 @@ class Register extends Form {
 	};
 
 	schema = {
-		username: Joi.string().required().label('Username').email({
-			minDomainSegments: 2,
-			tlds: { allow: [ 'com', 'net', 'ie' ] }
-		}),
-		password: Joi.string().required().label('Password').min(3).max(15),
+		username: Joi.string().required().label('Username').email(),
+		password: Joi.string().required().label('Password').min(5),
 		name: Joi.string().required().label('Name')
 	};
 
